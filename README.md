@@ -12,4 +12,4 @@ funny favicon or smth ig
 
 contact ahuman#6726 to contribute or request features
 
-inspired by Sasha Steffy who created enloetime.com
+inspired by Sasha Steffey who created enloetime.com
