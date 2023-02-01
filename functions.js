@@ -46,7 +46,7 @@ function checkPeriod() {
     if (h > 12) {h = h - 12};
     if (h < oneStart[0] && m < oneStart[1]) {h = h - oneStart[0]; m = m - oneStart[1]; period = "Before First Period";}
     else if (h < oneEnd[0] && m < oneEnd[1]) {h = h - oneEnd[0]; m = m - oneEnd[1]; period = "Left in First Period";}
-    else if (h < homeStart[0] && m < homeStart[1]) {h = h - homeStart[0]; m = m - homeStart[1]; period = "Before Homeroom"};
+    else if (h < homeStart[0] && m < homeStart[1]) {h = homeStart[0] - h; if (s > 0) {m = homeStart[1] - (m+1); s = 60 - s;} else {m = homeStart[1] - m;} period = "Before Homeroom";}
 
 
 }
