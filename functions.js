@@ -33,18 +33,10 @@ function startTime() {
     }
 
 function checkTime(i) {
-    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    if (i < 10) {i = "0" + i};
     return i;
     }
 
-/*
-function checkPeriod() { 
-
-
-
-
-}
-*/
 
 function checkPeriod() { 
     const today = new Date();
@@ -52,7 +44,8 @@ function checkPeriod() {
     let m = today.getMinutes();
     let s = today.getSeconds();
     let totals = (h * 3600) + (m * 60) + s;
-    let times = 0
+    let times = 0;
+    let timeLeft = 0;
     period = "Error no Period";
     if (totals < oneStart) {times = oneStart - totals; period = "Before School";}
     else if (totals < oneEnd) {times = oneEnd - totals; period = "Left of 1st Period";}
@@ -74,7 +67,12 @@ function checkPeriod() {
     else if (totals < fourEnd) {times = fourEnd - totals; period = "Left of 4th Period";}
     else {times = oneStart - totals; period = "After School";}
 
-    times = ((times-(times%3600))/3600) + ":" + ((times-(times%60))/60) + ":" + times%60;
+    /*
+    if (((times-(times%3600))/3600) < 10) {timeLeft = "0" + ((times-(times%3600))/3600)} else {timeLeft = ((times-(times%3600))/3600)}
+    if (((times-(times%60))/60) < 10) {timeLeft = timeLeft + ":0" + ((times-(times%60))/60)} else {timeLeft = timeLeft + ":" + ((times-(times%60))/60)}
+    if (times%60 < 10) {timeLeft = timeLeft + ":0" + times%60} else {timeLeft = timeLeft + ":" + times%60}
+    */
+    times = checkTime(((times-(times%3600))/3600)) + ":" + checkTime(((times-(times%60))/60)) + ":" + checkTime(times%60);
     document.getElementById('timeleft').innerHTML = times;
     document.getElementById('period').innerHTML = period;
     setTimeout(checkPeriod, 1000);
